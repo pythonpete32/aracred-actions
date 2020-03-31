@@ -1,29 +1,27 @@
-name: generate-cred
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
 
 on:
-  # Trigger on merging to master.
   push:
-    branches:
-      - master
-  # As well as every 6 hours.
-  schedule:
-    - cron: 0 */6 * * *
+    branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
 
     steps:
-      - name: "Checkout"
       - uses: actions/checkout@v2
-
-      - name: "Setup Node"
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
-
-      - name: npm install
-      - run: npm install
-
-      - name: npm test
+          node-version: ${{ matrix.node-version }}
+      - run: npm run prerelease
       - run: npm test
