@@ -19,10 +19,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Install aragonCLI dependencies
+      - run: sudo apt install build-essential git python
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
+      - name: install aragonCLI
+      - run: npm i -g @aragon/cli
+
       - run: npm install
       - run: npm run prerelease
-      - run: npm test
+      - run: npm testw
