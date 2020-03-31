@@ -23,13 +23,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run prerelease
+      - run: npm test
 
       - name: Install aragonCLI dependencies
       - run: sudo apt install build-essential git python
       - name: install aragonCLI
       - run: npm i -g @aragon/cli
-
-      - name: Run Program
-      - run: npm install
-      - run: npm run prerelease
-      - run: npm testw
