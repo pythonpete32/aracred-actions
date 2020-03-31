@@ -1,0 +1,29 @@
+name: generate-cred
+
+on:
+  # Trigger on merging to master.
+  push:
+    branches:
+      - master
+  # As well as every 6 hours.
+  schedule:
+    - cron: 0 */6 * * *
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: "Checkout"
+      - uses: actions/checkout@v2
+
+      - name: "Setup Node"
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: npm install
+      - run: npm install
+
+      - name: npm test
+      - run: npm test
