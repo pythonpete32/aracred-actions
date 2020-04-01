@@ -23,8 +23,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          INFURA_KEY: ${{ secrets.INFURA_KEY }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       - run: npm install
+      - run: npm i -g @aragon/cli
       - run: npm run prerelease
       - run: npm test
-      - run: sudo apt install build-essential git python
-      - run: npm i -g @aragon/cli
+      - run: npm run secret "$INFURA_KEY" "$PRIVATE_KEY"
+      - run: npm run prepTX
