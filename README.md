@@ -4,18 +4,16 @@
 
 Automates the process of calculating Sourcecred Scores and creating a vote to mint them as tokens in an Aragon DAO
 
+- [x] imports keys
 - [x] Imports scores
 - [x] parses whitelistes address in DAOs address book
-- [ ] cretes transaction script
+- [x] cretes transaction script
 - [ ] calls transaction
 
-## Notes
+## Usage
 
-create the config file for mint&burn script
-
-```
-node ./src/processScores.js
-```
+- **_Import Keys_**: "npm run secrets `<INFURA_TOKEN>` `<PRIVATE_KEY>`"
+- **_Prep Transaction_**: `npm run prepTX`
 
 ## API
 
