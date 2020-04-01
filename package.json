@@ -26,7 +26,9 @@
     "build": "babel src -d dist",
     "prerelease": "npm run lint && npm test && npm run build",
     "release": "standard-version",
-    "postpublish": "git push origin master --follow-tags"
+    "postpublish": "git push origin master --follow-tags",
+    "secrets": "node ./src/setupAragon.js",
+    "prepTX": "node ./src/processScores.js"
   },
   "husky": {
     "hooks": {
@@ -42,7 +44,12 @@
   "keywords": [
     "generator-nod"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@aragon/test-helpers": "^2.1.0",
+    "@aragon/toolkit": "0.0.5",
+    "ethereumjs-abi": "^0.6.8",
+    "web3": "^1.2.5-rc.0"
+  },
   "devDependencies": {
     "@babel/cli": "7.4.4",
     "@babel/core": "7.4.5",
