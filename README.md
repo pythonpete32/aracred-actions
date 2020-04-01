@@ -6,7 +6,7 @@ Automates the process of calculating Sourcecred Scores and creating a vote to mi
 
 - [x] Imports scores
 - [x] parses whitelistes address in DAOs address book
-- [x] cretes transaction script
+- [ ] cretes transaction script
 - [ ] calls transaction
 
 ## Notes

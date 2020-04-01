@@ -8,6 +8,7 @@
   "rules": {
     "semi": "off",
     "arrow-parens": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "space-before-function-paren": "off"
   }
 }

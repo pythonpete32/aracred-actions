@@ -1,5 +1,4 @@
 /* eslint-disable func-names */
-/* eslint-disable prettier/prettier */
 module.exports = function(wallaby) {
   return {
     files: [
