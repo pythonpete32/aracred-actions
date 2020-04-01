@@ -1,9 +1,10 @@
+const fs = require('fs')
 const data = require('../scores.json')
 const book = require('../addressbook.json')
+const transaction = require('../assignations.json')
 
 const grain = () => {
   const cred = []
-
   data[1].users
     .filter(element => element.address[1] === 'identity')
     .map(element => {
@@ -19,7 +20,18 @@ const grain = () => {
       ])
       return true // Add error handling
     })
-  return cred
+
+  transaction.mints = cred
+  const write = JSON.stringify(transaction, null, 2)
+
+  fs.writeFile('./transactionSettings.json', write, err => {
+    if (err) {
+      console.log('Error writing file', err)
+    } else {
+      console.log('Successfully wrote file')
+    }
+  })
+  return write
 }
 
-export default grain
+console.log(grain())
