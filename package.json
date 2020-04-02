@@ -29,7 +29,7 @@
     "postpublish": "git push origin master --follow-tags",
     "secrets": "node ./src/setupAragon.js",
     "prepTX": "node ./src/processScores.js",
-    "sendTX": "node ./src/mint.js"
+    "sendTX": "node ./src/mint.js | sh"
   },
   "husky": {
     "hooks": {
@@ -48,6 +48,7 @@
   "dependencies": {
     "@aragon/test-helpers": "^2.1.0",
     "@aragon/toolkit": "0.0.5",
+    "bignumber.js": "9.0.0",
     "ethereumjs-abi": "^0.6.8",
     "web3": "^1.2.5-rc.0"
   },

@@ -8,12 +8,13 @@ Automates the process of calculating Sourcecred Scores and creating a vote to mi
 - [x] Imports scores
 - [x] parses whitelistes address in DAOs address book
 - [x] cretes transaction script
-- [ ] calls transaction
+- [x] calls transaction
 
 ## Usage
 
-- **_Import Keys_**: "npm run secrets `<INFURA_TOKEN>` `<PRIVATE_KEY>`"
-- **_Prep Transaction_**: `npm run prepTX`
+- **_Import Keys_**: 'npm run secrets `<INFURA_TOKEN>` `<PRIVATE_KEY>`'
+- **_Prep Transaction_**: 'rnpm run prepTX'
+- **_Send Transaction_**: 'npm run sendTX'
 
 ## API
 
@@ -23,6 +24,7 @@ Automates the process of calculating Sourcecred Scores and creating a vote to mi
 
 - [sayHello](#sayhello)
   - [Parameters](#parameters)
+- [main](#main)
 
 ### sayHello
 
@@ -33,3 +35,14 @@ This function says hello.
 - `name` Some name to say hello for.
 
 Returns **any** The hello.
+
+### main
+
+This function generates an aragon CLI command and transaction data
+
+###
+
+This function transforms SourceCredit Scores and an Aragon Addressbook
+into a configuration file for the toolkit script
+
+Returns **any** The config json

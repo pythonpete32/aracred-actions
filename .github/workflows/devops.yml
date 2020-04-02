@@ -29,6 +29,6 @@ jobs:
       - run: npm i -g @aragon/cli
       - run: npm run prerelease
       - run: npm test
-      - run: npm run secrets "$INFURA_KEY" "$PRIVATE_KEY"
+      - run: npm run secrets $INFURA_KEY $PRIVATE_KEY
       - run: npm run prepTX
       - run: npm run sendTX | sh

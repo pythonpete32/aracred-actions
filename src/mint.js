@@ -1,5 +1,8 @@
+#!/usr/bin/env node
+
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
+
 const { encodeCallScript } = require('@aragon/test-helpers/evmScript')
 const { encodeActCall } = require('@aragon/toolkit')
 
@@ -12,6 +15,9 @@ const {
   environment,
 } = require('../transactionSettings.json')
 
+/**
+ * This function generates an aragon CLI command and transaction data
+ */
 async function main() {
   // Encode a bunch of token mints and burns.
   const mintSignature = 'mint(address,uint256)'
