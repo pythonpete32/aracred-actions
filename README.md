@@ -12,9 +12,23 @@ Automates the process of calculating Sourcecred Scores and creating a vote to mi
 
 ## Usage
 
-- **_Import Keys_**: 'npm run secrets `<INFURA_TOKEN>` `<PRIVATE_KEY>`'
-- **_Prep Transaction_**: 'rnpm run prepTX'
-- **_Send Transaction_**: 'npm run sendTX'
+### clone and install
+
+```
+git clone https://github.com/pythonpete32/aracred-actions.git && cd aracred-actions && npm i
+```
+
+### Import Keys:
+
+`npm run secrets <INFURA_TOKEN> <PRIVATE_KEY>`
+
+### Prep Transaction:
+
+`npm run prepTX`
+
+### Send Transaction:
+
+node ./src/mint.js | sh
 
 ## API
 
