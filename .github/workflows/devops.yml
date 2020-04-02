@@ -34,6 +34,3 @@ jobs:
           INFURA_KEY: "${{ secrets.INFURA_KEY }}"
           PRIVATE_KEY: "${{ secrets.PRIVATE_KEY1 }}"
       - run: "echo $PRIVATE_KEY1 $INFURA_KEY"
-        with:
-          INFURA_KEY: "${{ secrets.INFURA_KEY }}"
-          PRIVATE_KEY1: "${{ secrets.PRIVATE_KEY1 }}"
