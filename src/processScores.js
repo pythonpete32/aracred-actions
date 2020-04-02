@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-useless-escape */
 
+// TODO: Refactor
+// Refactor into exportable functions for testing
+
 const writeFile = require('fs')
 
 const BigNumber = require('bignumber.js')
@@ -21,6 +24,7 @@ const transaction = {
  * into a configuration file for the toolkit script
  * @returns The config json
  */
+
 const grain = () => {
   const cred = []
   data[1].users

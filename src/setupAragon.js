@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 /* eslint-disable global-require */
+// TODO: Refactor setupAragon
+// Refactor to the file exports the function for testing
+
+// TODO: Create unit tests for# setupAragon()
+// crete unit test for the functiom
 const fs = require('fs')
 
 const args = process.argv.slice(2)
