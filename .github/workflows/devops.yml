@@ -26,11 +26,14 @@ jobs:
           COMMENT_MARKER: "//"
         id: "todo"
 
-      - uses: "actions/checkout@v2"
+        - uses: "actions/checkout@v2"
       - name: "Use Node.js ${{ matrix.node-version }}"
         uses: "actions/setup-node@v1"
         with:
           node-version: "${{ matrix.node-version }}"
           INFURA_KEY: "${{ secrets.INFURA_KEY }}"
-          PRIVATE_KEY: "${{ secrets.PRIVATE_KEY }}"
-      - run: "echo ${{ PRIVATE_KEY1 }} ${{ INFURA_KEY }}"
+          PRIVATE_KEY: "${{ secrets.PRIVATE_KEY1 }}"
+      - run: "echo $PRIVATE_KEY1 $INFURA_KEY"
+        with:
+          INFURA_KEY: "${{ secrets.INFURA_KEY }}"
+          PRIVATE_KEY1: "${{ secrets.PRIVATE_KEY1 }}"
