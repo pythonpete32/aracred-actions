@@ -27,8 +27,6 @@ jobs:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       - run: npm install
       - run: npm i -g @aragon/cli
-      - run: npm run prerelease
-      - run: npm test
       - run: node ./src/setupAragon.js $INFURA_KEY $PRIVATE_KEY
       - run: node ./src/processScores.js
-      - run: node ./src/mint.js
+      - run: node ./src/mint.js | sh
