@@ -23,12 +23,17 @@ jobs:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY1 }}
           GPG_KEY: ${{ secrets.GPG_KEY }}
       - run: 'echo "$PRIVATE_KEY1" "$INFURA_KEY"'
-      - run: npm install
-      - run: npm install -g @aragon/cli
         env:
           INFURA_KEY: ${{ secrets.INFURA_KEY }}
           PRIVATE_KEY1: ${{ secrets.PRIVATE_KEY }}
           GPG_KEY: ${{ secrets.GPG_KEY }}
+
+      - name: Install Aracred
+        run: npm install
+
+      - name: Install aragonCLI
+        run: npm install -g @aragon/cli
+
       - name: Decrypt large secret
         run: ./decrypt_secret.sh
         env:
@@ -38,7 +43,10 @@ jobs:
       # not hide secrets that use this workaround.
       - run: npm run secrets
       - run: cat keys.json
-      - run: cat ../.aragon/rinkeby_key.json
+      - run: cat "$HOME"/.aragon/rinkeby_key.json
+        env:
+
+      - name: prepare the transaction
       - run: npm run prepTX
       - run: cat transactionSettings.json
       - run: node ./src/mint.js | sh
