@@ -27,9 +27,12 @@ jobs:
           INFURA_KEY: "${{ secrets.INFURA_KEY }}"
           PRIVATE_KEY1: "${{ secrets.PRIVATE_KEY }}"
           GPG_KEY: "${{ secrets.GPG_KEY }}"
-      - run: node ./running.js
-#      - run: npm install -g @aragon/cli
-#      - run: node ./src/secrets "$PRIVATE_KEY1" "$INFURA_KEY"
-#      - run: 'echo "$PRIVATE_KEY1" "$INFURA_KEY"'
-#      - run: node ./src/prepTX
-#      - run: node ./src/mint.js |
+      - name: Decrypt large secret
+        run: ./decrypt_secret.sh
+        env:
+          GPG_KEY: ${{ secrets.GPG_KEY }}
+      # This command is just an example to show your secret being printed
+      # Ensure you remove any print statements of your secrets. GitHub does
+      # not hide secrets that use this workaround.
+      - name: Test printing your secret (Remove this step in production)
+        run: cat keys.json
