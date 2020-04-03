@@ -20,14 +20,11 @@ jobs:
         with:
           node-version: "${{ matrix.node-version }}"
           GPG_KEY: "${{ secrets.GPG_KEY }}"
-      - run: 'echo "$PRIVATE_KEY1" "$INFURA_KEY"'
-        env:
-          GPG_KEY: "${{ secrets.GPG_KEY }}"
       - name: Decrypt large secret
         run: ./decrypt_secret.sh
         env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
-      - name: Test printing your secret (Remove this step in production)
+      - name: Test printing secret (Remove this step in production)
         run: cat keys.json
       - name: Install Aracred
         run: npm ci
@@ -37,9 +34,13 @@ jobs:
         run: ./decrypt_secret.sh
         env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
-      - run: npm run secrets
-      - run: cat keys.json
-      - run: cat "$HOME"/.aragon/rinkeby_key.json
-      - run: npm run prepTX
+      - name: Creating web3 provider config
+        run: npm run secrets
+      - name: Test printing web3 config (Remove this step in production)
+        run: cat "$HOME"/.aragon/rinkeby_key.json
+      - name: Prepare transaction
+        run: npm run prepTX
+      - name: SourceCred Grain
       - run: cat transactionSettings.json
+      - name: Sending Transaction
       - run: node ./src/mint.js | sh
