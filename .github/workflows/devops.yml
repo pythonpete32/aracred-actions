@@ -34,7 +34,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
           INFURA_KEY: ${{ secrets.INFURA_KEY }}
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY1 }}
-        env:
-          INFURA_KEY: "${{ secrets.INFURA_KEY }}"
-          PRIVATE_KEY1: "${{ secrets.PRIVATE_KEY }}"
       - run: echo "$PRIVATE_KEY1" "$INFURA_KEY"
