@@ -22,12 +22,12 @@ jobs:
           INFURA_KEY: "${{ secrets.INFURA_KEY }}"
           PRIVATE_KEY: "${{ secrets.PRIVATE_KEY1 }}"
       - run: 'echo "$PRIVATE_KEY1" "$INFURA_KEY"'
+        env:
+          INFURA_KEY: "${{ secrets.INFURA_KEY }}"
+          PRIVATE_KEY1: "${{ secrets.PRIVATE_KEY }}"
       - run: npm install
       - run: npm install -g @aragon/cli
       - run: node ./src/secrets "$PRIVATE_KEY1" "$INFURA_KEY"
       - run: 'echo "$PRIVATE_KEY1" "$INFURA_KEY"'
       - run: node ./src/prepTX
       - run: node ./src/mint.js | sh
-        env:
-          INFURA_KEY: "${{ secrets.INFURA_KEY }}"
-          PRIVATE_KEY1: "${{ secrets.PRIVATE_KEY }}"
