@@ -1,5 +1,4 @@
-![Node.js CI](https://github.com/pythonpete32/aracred-actions/workflows/Node.js%20CI/badge.svg)
-
+![Aracred-actions CI](https://github.com/pythonpete32/aracred-actions/workflows/Aracred-actions%20CI/badge.svg)
 # Aracred-actions
 
 > **_ WARNING: _** _DO NOT USE THS ON MAINNET_
