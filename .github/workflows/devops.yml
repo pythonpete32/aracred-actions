@@ -1,26 +1,34 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Aracred-actions CI
+name: "Aracred-actions CI"
 
 on: ["push"]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: "ubuntu-latest"
 
     strategy:
       matrix:
         node-version: [10.x, 12.x]
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - uses: "actions/checkout@v2"
+      - name: "Use Node.js ${{ matrix.node-version }}"
+        uses: "actions/setup-node@v1"
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: "${{ matrix.node-version }}"
+          GPG_KEY: "${{ secrets.GPG_KEY }}"
+      - run: 'echo "$PRIVATE_KEY1" "$INFURA_KEY"'
+        env:
+          GPG_KEY: "${{ secrets.GPG_KEY }}"
+      - name: Decrypt large secret
+        run: ./decrypt_secret.sh
+        env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
-      - run: npm ci
-      - run: npm install -g @aragon/cli
-      - run: ./decrypt_secret.sh
-      - env:
-          GPG_KEY: ${{ secrets.GPG_KEY }}
+      # This command is just an example to show your secret being printed
+      # Ensure you remove any print statements of your secrets. GitHub does
+      # not hide secrets that use this workaround.
+      - name: Test printing your secret (Remove this step in production)
+        run: cat keys.json
