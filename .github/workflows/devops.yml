@@ -24,7 +24,8 @@ jobs:
       - run: ./decrypt_secret.sh
       - env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
-      - run: npm run secrets
+      - name: run secrets
+        run: npm run secrets
       - run: cat keys.json
       - run: cat "$HOME"/.aragon/rinkeby_key.json
       - run: npm run prepTX
