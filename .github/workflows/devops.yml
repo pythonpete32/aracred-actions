@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: "${{ matrix.node-version }}"
           GPG_KEY: "${{ secrets.GPG_KEY }}"
-      - name: Decrypt large secret
+      - name: Decrypt secret keys
         run: ./decrypt_secret.sh
         env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
