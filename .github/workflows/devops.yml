@@ -31,3 +31,15 @@ jobs:
         run: cat keys.json
       - name: Test printing your secret (Remove this step in production)
         run: npm ci
+      - name: Test printing your secret (Remove this step in production)
+        run: npm install -g @aragon/cli
+      - name: Test printing your secret (Remove this step in production)
+        run: ./decrypt_secret.sh
+        env:
+          GPG_KEY: ${{ secrets.GPG_KEY }}
+      - run: npm run secrets
+      - run: cat keys.json
+      - run: cat "$HOME"/.aragon/rinkeby_key.json
+      - run: npm run prepTX
+      - run: cat transactionSettings.json
+      - run: node ./src/mint.js | sh
