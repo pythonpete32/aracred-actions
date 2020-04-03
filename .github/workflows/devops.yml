@@ -1,32 +1,32 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: "Aracred-actions CI"
+name: Aracred-actions CI
 
 on: ["push"]
 
 jobs:
   build:
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [10.x, 12.x]
 
     steps:
-      - uses: "actions/checkout@v2"
-      - name: "Use Node.js ${{ matrix.node-version }}"
-        uses: "actions/setup-node@v1"
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          node-version: "${{ matrix.node-version }}"
-          INFURA_KEY: "${{ secrets.INFURA_KEY }}"
-          PRIVATE_KEY: "${{ secrets.PRIVATE_KEY1 }}"
-          GPG_KEY: "${{ secrets.GPG_KEY }}"
+          node-version: ${{ matrix.node-version }}
+          INFURA_KEY: ${{ secrets.INFURA_KEY }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY1 }}
+          GPG_KEY: ${{ secrets.GPG_KEY }}
       - run: 'echo "$PRIVATE_KEY1" "$INFURA_KEY"'
         env:
-          INFURA_KEY: "${{ secrets.INFURA_KEY }}"
-          PRIVATE_KEY1: "${{ secrets.PRIVATE_KEY }}"
-          GPG_KEY: "${{ secrets.GPG_KEY }}"
+          INFURA_KEY: ${{ secrets.INFURA_KEY }}
+          PRIVATE_KEY1: ${{ secrets.PRIVATE_KEY }}
+          GPG_KEY: ${{ secrets.GPG_KEY }}
       - name: Decrypt large secret
         run: ./decrypt_secret.sh
         env:
@@ -36,3 +36,5 @@ jobs:
       # not hide secrets that use this workaround.
       - name: Test printing your secret (Remove this step in production)
         run: cat keys.json
+        run: npm run prepTX
+        run: cat ../.aragon/rinkeby_key.json
