@@ -21,7 +21,6 @@ jobs:
           INFURA_KEY: ${{ secrets.INFURA_KEY }}
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY1 }}
           GPG_KEY: ${{ secrets.GPG_KEY }}
-
       - run: npm ci
       - run: npm install -g @aragon/cli
       - run: ./decrypt_secret.sh
