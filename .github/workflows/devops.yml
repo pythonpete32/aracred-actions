@@ -16,17 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
           INFURA_KEY: ${{ secrets.INFURA_KEY }}
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY1 }}
           GPG_KEY: ${{ secrets.GPG_KEY }}
-      - run: 'echo "$PRIVATE_KEY1" "$INFURA_KEY"'
-        env:
-          INFURA_KEY: ${{ secrets.INFURA_KEY }}
-          PRIVATE_KEY1: ${{ secrets.PRIVATE_KEY }}
-          GPG_KEY: ${{ secrets.GPG_KEY }}
+
       - run: npm ci
       - run: npm install -g @aragon/cli
       - run: ./decrypt_secret.sh
