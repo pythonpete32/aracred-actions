@@ -14,27 +14,29 @@ jobs:
         node-version: [10.x, 12.x]
 
     steps:
-      - uses: "actions/checkout@master"
-      - name: "TODO to Issue"
-        uses: "alstr/todo-to-issue-action@master"
-        with:
-          REPO: ${{ github.repository }}
-          BEFORE: ${{ github.event.before }}
-          SHA: ${{ github.sha }}
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LABEL: "// TDOO"
-          COMMENT_MARKER: "//"
-        id: "todo"
-
       - uses: "actions/checkout@v2"
       - name: "Use Node.js ${{ matrix.node-version }}"
         uses: "actions/setup-node@v1"
         with:
           node-version: "${{ matrix.node-version }}"
-          INFURA_KEY: "${{ secrets.INFURA_KEY }}"
-          PRIVATE_KEY: "${{ secrets.PRIVATE_KEY }}"
-      - run: "npm install"
-      - run: "npm i -g @aragon/cli"
-      - run: "node ./src/setupAragon.js $INFURA_KEY $PRIVATE_KEY"
-      - run: "node ./src/processScores.js"
-      - run: "node ./src/mint.js"
+          GPG_KEY: "${{ secrets.GPG_KEY }}"
+      - name: Decrypt secret keys
+        run: ./decrypt_secret.sh
+        env:
+          GPG_KEY: ${{ secrets.GPG_KEY }}
+      - name: Install Aracred
+        run: npm ci
+      - name: Install Aragon
+        run: npm install -g @aragon/cli
+      - name: Decrypt keys
+        run: ./decrypt_secret.sh
+        env:
+          GPG_KEY: ${{ secrets.GPG_KEY }}
+      - name: Creating web3 provider config
+        run: npm run secrets
+      - name: Prepare transaction
+        run: npm run prepTX
+      - name: SourceCred Grain
+        run: cat transactionSettings.json
+      - name: Sending Transaction
+        run: node ./src/mint.js | sh

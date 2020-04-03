@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-useless-escape */
 
+// TODO: Refactor
+// Refactor into exportable functions for testing
+
 const writeFile = require('fs')
 
 const BigNumber = require('bignumber.js')
@@ -8,10 +11,11 @@ const BigNumber = require('bignumber.js')
 const data = require('../scores.json')
 const book = require('../addressbook.json')
 
+// WARNING: These settings are not saving correct
 const transaction = {
-  daoAddress: '0x80ac741A39b4cCc71163d71a75b6ad498Ccd30d6',
-  tokenManagerAddress: '0x96794a087c6f54012e4d3e05117998418a3e305f',
-  votingAddress: '0xe7f194cd2d2d13635b7d617d9bfe31ee919eb858',
+  daoAddress: '0xA9D3447C6F727224BB30C5BE380750E03ada6d9B',
+  tokenManagerAddress: '0xe00cb0155a8e6113620bbd45c25678cd679a4ebf',
+  votingAddress: '0x3762ecf1595f4cf411ced7647971635d5ceb6aa1',
   environment: 'rinkeby',
   mints: [],
   burns: [],
@@ -21,6 +25,7 @@ const transaction = {
  * into a configuration file for the toolkit script
  * @returns The config json
  */
+
 const grain = () => {
   const cred = []
   data[1].users
