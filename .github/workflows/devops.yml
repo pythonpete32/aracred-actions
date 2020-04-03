@@ -24,10 +24,3 @@ jobs:
       - run: ./decrypt_secret.sh
       - env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
-      - name: run secrets
-        run: npm run secrets
-      - run: cat keys.json
-      - run: cat "$HOME"/.aragon/rinkeby_key.json
-      - run: npm run prepTX
-      - run: cat transactionSettings.json
-      - run: node ./src/mint.js | sh
