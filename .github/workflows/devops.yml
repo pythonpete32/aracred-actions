@@ -24,8 +24,6 @@ jobs:
         run: ./decrypt_secret.sh
         env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
-      - name: Test printing secret (Remove this step in production)
-        run: cat keys.json
       - name: Install Aracred
         run: npm ci
       - name: Install Aragon
@@ -36,8 +34,6 @@ jobs:
           GPG_KEY: ${{ secrets.GPG_KEY }}
       - name: Creating web3 provider config
         run: npm run secrets
-      - name: Test printing web3 config (Remove this step in production)
-        run: cat "$HOME"/.aragon/rinkeby_key.json
       - name: Prepare transaction
         run: npm run prepTX
       - name: SourceCred Grain
