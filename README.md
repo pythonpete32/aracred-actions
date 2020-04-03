@@ -20,7 +20,7 @@ git clone https://github.com/pythonpete32/aracred-actions.git && cd aracred-acti
 
 ### Import Keys:
 
-`npm run secrets <INFURA_TOKEN> <PRIVATE_KEY>`
+`npm run secrets`
 
 ### Prep Transaction:
 
