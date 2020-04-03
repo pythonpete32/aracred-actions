@@ -27,16 +27,10 @@ jobs:
           INFURA_KEY: ${{ secrets.INFURA_KEY }}
           PRIVATE_KEY1: ${{ secrets.PRIVATE_KEY }}
           GPG_KEY: ${{ secrets.GPG_KEY }}
-
-      - name: Install Aracred
-        run: npm install
-
-      - name: Install aragonCLI
-        run: npm install -g @aragon/cli
-
-      - name: Decrypt large secret
-        run: ./decrypt_secret.sh
-        env:
+      - run: npm install
+      - run: npm install -g @aragon/cli
+      - run: ./decrypt_secret.sh
+      - env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
       # This command is just an example to show your secret being printed
       # Ensure you remove any print statements of your secrets. GitHub does
@@ -44,9 +38,6 @@ jobs:
       - run: npm run secrets
       - run: cat keys.json
       - run: cat "$HOME"/.aragon/rinkeby_key.json
-        env:
-
-      - name: prepare the transaction
       - run: npm run prepTX
       - run: cat transactionSettings.json
       - run: node ./src/mint.js | sh
