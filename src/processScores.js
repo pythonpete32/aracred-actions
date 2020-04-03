@@ -12,9 +12,9 @@ const data = require('../scores.json')
 const book = require('../addressbook.json')
 
 const transaction = {
-  daoAddress: '0x80ac741A39b4cCc71163d71a75b6ad498Ccd30d6',
-  tokenManagerAddress: '0x96794a087c6f54012e4d3e05117998418a3e305f',
-  votingAddress: '0xe7f194cd2d2d13635b7d617d9bfe31ee919eb858',
+  daoAddress: '0xF482482163AfE0B2fC30B835b59C8fBEd7942d04',
+  tokenManagerAddress: '0xdbd6431a62f6e328656f07999e3a78109a95c5a1',
+  votingAddress: '0xc833f79c13d53775fc124785d143e2a3927d8cca',
   environment: 'rinkeby',
   mints: [],
   burns: [],

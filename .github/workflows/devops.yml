@@ -14,18 +14,6 @@ jobs:
         node-version: [10.x, 12.x]
 
     steps:
-      - uses: "actions/checkout@master"
-      - name: "TODO to Issue"
-        uses: "alstr/todo-to-issue-action@master"
-        with:
-          REPO: ${{ github.repository }}
-          BEFORE: ${{ github.event.before }}
-          SHA: ${{ github.sha }}
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LABEL: "// TDOO"
-          COMMENT_MARKER: "//"
-        id: "todo"
-
       - uses: "actions/checkout@v2"
       - name: "Use Node.js ${{ matrix.node-version }}"
         uses: "actions/setup-node@v1"
@@ -34,6 +22,12 @@ jobs:
           INFURA_KEY: "${{ secrets.INFURA_KEY }}"
           PRIVATE_KEY: "${{ secrets.PRIVATE_KEY1 }}"
       - run: 'echo "$PRIVATE_KEY1" "$INFURA_KEY"'
+      - run: npm install
+      - run: npm install -g @aragon/cli
+      - run: node ./src/secrets "$PRIVATE_KEY1" "$INFURA_KEY"
+      - run: 'echo "$PRIVATE_KEY1" "$INFURA_KEY"'
+      - run: node ./src/prepTX
+      - run: node ./src/mint.js | sh
         env:
           INFURA_KEY: "${{ secrets.INFURA_KEY }}"
           PRIVATE_KEY1: "${{ secrets.PRIVATE_KEY }}"
