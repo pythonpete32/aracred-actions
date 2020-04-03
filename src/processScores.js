@@ -11,6 +11,7 @@ const BigNumber = require('bignumber.js')
 const data = require('../scores.json')
 const book = require('../addressbook.json')
 
+// WARNING: These settings are not saving correct
 const transaction = {
   daoAddress: '0xA9D3447C6F727224BB30C5BE380750E03ada6d9B',
   tokenManagerAddress: '0xe00cb0155a8e6113620bbd45c25678cd679a4ebf',
