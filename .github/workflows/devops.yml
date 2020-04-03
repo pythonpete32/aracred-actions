@@ -41,6 +41,6 @@ jobs:
       - name: Prepare transaction
         run: npm run prepTX
       - name: SourceCred Grain
-      - run: cat transactionSettings.json
+        run: cat transactionSettings.json
       - name: Sending Transaction
         run: node ./src/mint.js | sh
