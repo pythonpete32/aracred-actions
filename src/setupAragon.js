@@ -6,12 +6,12 @@
 // TODO: Create unit tests for# setupAragon()
 // crete unit test for the functiom
 const fs = require('fs')
+const secrets = require('../keys.json') // ?+
 
-const args = process.argv.slice(2)
 const keySettings = JSON.stringify(
   {
-    rpc: `https://rinkeby.infura.io/v3/${args[0]}`,
-    keys: [`${args[1]}`],
+    rpc: `https://rinkeby.infura.io/v3/${secrets.INFURA_KEY}`, // ?+
+    keys: [`${secrets.PRIVATE_KEY}`], // ?+
   },
   null,
   2,
