@@ -29,11 +29,11 @@ jobs:
           GPG_KEY: ${{ secrets.GPG_KEY }}
       - name: Test printing your secret (Remove this step in production)
         run: cat keys.json
-      - name: Test printing your secret (Remove this step in production)
+      - name: Install Aracred
         run: npm ci
-      - name: Test printing your secret (Remove this step in production)
+      - name: Install Aragon
         run: npm install -g @aragon/cli
-      - name: Test printing your secret (Remove this step in production)
+      - name: Decrypt keys
         run: ./decrypt_secret.sh
         env:
           GPG_KEY: ${{ secrets.GPG_KEY }}
